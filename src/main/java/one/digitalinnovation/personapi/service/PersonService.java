@@ -48,20 +48,20 @@ public class PersonService {
 
     //Method Search Person by ID
     public PersonDTO findById(Long id) throws PersonNotFoundException {
-        /** Maneira de Usar 1 */
-        Person person = personRepository.findById(id)
-                .orElseThrow(() -> new PersonNotFoundException(id));
+        Person person = verifyIfExists(id);
         return personMapper.toDTO(person);
+    }
 
+    //Method Delete by ID
+    public void delete(long id) throws PersonNotFoundException {
+        verifyIfExists(id);
+        personRepository.deleteById(id);
+    }
 
-        /** Maneira de Usar 2 */
-        /*Optional<Person> opcionalPerson = personRepository.findById(id);
-        if(opcionalPerson.isEmpty()){
-            throw new PersonNotFoundException(id);
-        }
-        return personMapper.toDTO(opcionalPerson.get());
-        */
-
+    //Method verify if Exists
+    private Person verifyIfExists (Long id) throws PersonNotFoundException {
+        return personRepository.findById(id)
+                .orElseThrow(() -> new PersonNotFoundException(id));
     }
 
 
