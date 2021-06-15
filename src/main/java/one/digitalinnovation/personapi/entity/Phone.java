@@ -14,15 +14,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity //Indica que a Classe é um entidade
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Phone {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id //Id que identifica a class
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Geracao de ID incremental
     private Long id;
 
     @Enumerated(EnumType.STRING)

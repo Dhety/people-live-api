@@ -20,7 +20,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class PersonServiceTest {
 
-    @Mock
+    /*@Mock
     private PersonRepository personRepository;
 
     @InjectMocks
@@ -44,5 +44,5 @@ public class PersonServiceTest {
                 .builder()
                 .message("Created person with ID " + id)
                 .build();
-    }
+    }*/
 }
