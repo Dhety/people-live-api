@@ -8,10 +8,11 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper
 public interface PersonMapper {
+    // interface para converter e mapear a data corretamente, passar de person para personDTO pois a data está com localdate
 
-    PersonMapper INSTANCE = Mappers.getMapper(PersonMapper.class);
+    PersonMapper INSTANCE = Mappers.getMapper(PersonMapper.class);//conversao
 
-    @Mapping(target = "birthDate", source = "birthDate", dateFormat = "dd-MM-yyyy")
+    @Mapping(target = "birthDate", source = "birthDate", dateFormat = "dd-MM-yyyy") // mapeando data com formato corretamente
     Person toModel(PersonDTO personDTO);
 
     PersonDTO toDTO(Person person);

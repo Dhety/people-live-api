@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PersonDTO {
-
+    //validacao dos dados de entrada
     private Long id;
 
     @NotEmpty
