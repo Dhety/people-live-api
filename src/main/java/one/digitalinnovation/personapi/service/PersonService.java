@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,6 +27,7 @@ public class PersonService {
         this.personRepository = personRepository;
     }
 
+    //Method Create
     public MessageResponseDTO createPerson(PersonDTO personDTO){
         Person personToSave = personMapper.toModel(personDTO);
 
@@ -36,11 +38,30 @@ public class PersonService {
                 .build();
     }
 
+    //Method List All
     public List<PersonDTO> listAll() {
         List<Person> allPeople = personRepository.findAll();
         return allPeople.stream()
                 .map(personMapper::toDTO)
                 .collect(Collectors.toList());
+    }
+
+    //Method Search Person by ID
+    public PersonDTO findById(Long id) throws PersonNotFoundException {
+        /** Maneira de Usar 1 */
+        Person person = personRepository.findById(id)
+                .orElseThrow(() -> new PersonNotFoundException(id));
+        return personMapper.toDTO(person);
+
+
+        /** Maneira de Usar 2 */
+        /*Optional<Person> opcionalPerson = personRepository.findById(id);
+        if(opcionalPerson.isEmpty()){
+            throw new PersonNotFoundException(id);
+        }
+        return personMapper.toDTO(opcionalPerson.get());
+        */
+
     }
 
 
