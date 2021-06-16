@@ -20,7 +20,8 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class PersonServiceTest {
 
-    /*@Mock
+
+    @Mock
     private PersonRepository personRepository;
 
     @InjectMocks
@@ -33,16 +34,20 @@ public class PersonServiceTest {
 
         when(personRepository.save(any(Person.class))).thenReturn(expectedSavedPerson);
 
+        //Mensagem de sucesso esperado!
         MessageResponseDTO expectedSuccessMessage = createExpectedMessageResponse(expectedSavedPerson.getId());
+
+        //Mensagem de sucesso!
         MessageResponseDTO succesMessage = personService.createPerson(personDTO);
 
+        //Comparacao das Mensagens - um tem que ser igual a outra
         assertEquals(expectedSuccessMessage, succesMessage);
     }
 
     private MessageResponseDTO createExpectedMessageResponse(Long id) {
         return MessageResponseDTO
                 .builder()
-                .message("Created person with ID " + id)
+                .message("Created Person with ID: " + id)
                 .build();
-    }*/
+    }
 }

@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 //Caminho de acesso a API no Navegador
 @RequestMapping("/api/v1/people")
-@AllArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor(onConstructor = @__(@Autowired)) // Cria um construtor padrao
 public class PersonController {
 
     private  PersonService personService;
